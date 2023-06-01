@@ -1,9 +1,19 @@
-import MainLayout from "@/Layouts/Plantilla";
-
+import HeaderPrincipal from "@/Components/Header";
+import FooterPrincipal from "@/Components/Footer";
+import Principal from "@/Components/Principal";
+import { Head } from "@inertiajs/react";
 export default function HomePage() {
     return (
-        <MainLayout>
-            <h1 className="text-3xl">Hello world!</h1>
-        </MainLayout>
+        <div className="flex flex-col h-screen">
+            <Head title="Inicio" />
+            {/* header */}
+            <HeaderPrincipal />
+            {/* Content */}
+            <main className="container mx-auto mt-28">
+                <Principal />
+            </main>
+            {/* Footer */}
+            <FooterPrincipal />
+        </div>
     );
 }
