@@ -61,6 +61,16 @@ Route::get('/eventosactuales', function () {
 Route::get('/eventosfuturos', function () {
     return Inertia::render('EventosFuturos');
 })->middleware(['auth', 'verified'])->name('EventosFuturos');
+{/* Menu de Administración */}
+Route::get('/administraciongcap', function () {
+    return Inertia::render('AdministracionGCap');
+})->middleware(['auth', 'verified'])->name('AdministracionGCap');
+Route::get('/administracionggev', function () {
+    return Inertia::render('AdministracionGEv');
+})->middleware(['auth', 'verified'])->name('AdministracionGEv');
+Route::get('/administraciongsol', function () {
+    return Inertia::render('administracionGSol');
+})->middleware(['auth', 'verified'])->name('AdministracionGSol');
 
 
 Route::middleware('auth')->group(function () {
