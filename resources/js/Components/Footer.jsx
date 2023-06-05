@@ -11,8 +11,8 @@ export default function FooterPrincipal() {
       {/* End Col */}
   
       <div className="mt-3">
-        <p className="text-gray-500">Probando!! Footer <a className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400" href="#">CIP</a> Cajamarca.</p>
-        <p className="text-gray-500">@{year} . All rights reserved.</p>
+        <p className="text-gray-500">Probando!! Footer <a className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400" href="https://www.cip.org.pe/">CIP</a> Cajamarca.</p>
+        <p className="text-gray-500">@{year} . Todos los derechos reservados.</p>
       </div>
   
       {/* Social Brands */}
