@@ -69,7 +69,7 @@ Route::get('/administracionggev', function () {
     return Inertia::render('AdministracionGEv');
 })->middleware(['auth', 'verified'])->name('AdministracionGEv');
 Route::get('/administraciongsol', function () {
-    return Inertia::render('administracionGSol');
+    return Inertia::render('AdministracionGSol');
 })->middleware(['auth', 'verified'])->name('AdministracionGSol');
 
 
