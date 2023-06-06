@@ -9,7 +9,7 @@ export default function HomePage() {
             {/* header */}
             <HeaderPrincipal />
             {/* Content */}
-            <main className="container mx-auto mt-28">
+            <main className="container mx-auto mt-8">
                 <Principal />
             </main>
             {/* Footer */}
