@@ -65,7 +65,7 @@ Route::get('/eventosfuturos', function () {
 Route::get('/administraciongcap', function () {
     return Inertia::render('AdministracionGCap');
 })->middleware(['auth', 'verified'])->name('AdministracionGCap');
-Route::get('/administracionggev', function () {
+Route::get('/administraciongev', function () {
     return Inertia::render('AdministracionGEv');
 })->middleware(['auth', 'verified'])->name('AdministracionGEv');
 Route::get('/administraciongsol', function () {
