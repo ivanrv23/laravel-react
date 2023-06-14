@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ColegiadoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+// Rutas
+Route::resource('colegiados', ColegiadoController::class)
+->only('index','store','update');
+
 {/* La de ejemplo*/}
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
