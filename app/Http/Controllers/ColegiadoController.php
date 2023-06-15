@@ -16,6 +16,7 @@ class ColegiadoController extends Controller
     {
         //
         return Inertia::render('Colegiado/Index',[
+            'colegiados' => Colegiado::all(),
             
         ]);
     }
