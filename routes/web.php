@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\AportacionesControlador;
+use App\Http\Controllers\ColegiadoController;
 use App\Http\Controllers\Pagos;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
