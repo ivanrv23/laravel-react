@@ -176,35 +176,39 @@ export default function ProductsDemo() {
         setProduct(_product);
     };
 
+    // BOTONES DE CABECERA
     const leftToolbarTemplate = () => {
         return (
             <div className="flex flex-wrap gap-2">
-                <Button label="New" size='small' icon="pi pi-plus" severity="success" onClick={openNew} />
-                <Button label="Delete" size='small' icon="pi pi-trash" severity="danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
+                <Button label="Agregar" size='small' icon="pi pi-plus" severity="success" onClick={openNew} />
+                <Button label="eliminar" size='small' icon="pi pi-trash" severity="danger" onClick={confirmDeleteSelected} disabled={!selectedProducts || !selectedProducts.length} />
             </div>
         );
     };
-
+    // BOTON EXPORTAR A CVS
     const rightToolbarTemplate = () => {
-        return <Button label="Export"  size='small' icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />;
+        return <Button label="Descargar"  size='small' icon="pi pi-upload" className="p-button-help" onClick={exportCSV} />;
     };
-
+    // IMAGEN DE TABLA
     const imageBodyTemplate = (rowData) => {
         return <img src={`https://primefaces.org/cdn/primereact/images/product/${rowData.image}`} alt={rowData.image} className="shadow-2 border-round" style={{ width: '64px' }} />;
     };
-
+    // PRECIO DE TABLA
     const priceBodyTemplate = (rowData) => {
         return formatCurrency(rowData.price);
     };
 
+    // ESTRELLAS DE TABLA
     const ratingBodyTemplate = (rowData) => {
         return <Rating value={rowData.rating} readOnly cancel={false} />;
     };
 
+    // BOTON DE ESTADO
     const statusBodyTemplate = (rowData) => {
         return <Tag value={rowData.inventoryStatus} severity={getSeverity(rowData)}></Tag>;
     };
 
+    // BOTONES DE ACCIONES
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
@@ -213,7 +217,7 @@ export default function ProductsDemo() {
             </React.Fragment>
         );
     };
-
+    // DAR COLOR DE ESTADO DE TABLA
     const getSeverity = (product) => {
         switch (product.inventoryStatus) {
             case 'INSTOCK':
@@ -230,26 +234,30 @@ export default function ProductsDemo() {
         }
     };
 
+    // BOTON BUSCAR EN TABLA
     const header = (
         <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
             </span>
         </div>
     );
+    // BOTONES DIALOG HEADER CONFIRMACION AGREGAR PRODUCTO
     const productDialogFooter = (
         <React.Fragment>
             <Button label="Cancel" icon="pi pi-times" outlined onClick={hideDialog} />
             <Button label="Save" icon="pi pi-check" onClick={saveProduct} />
         </React.Fragment>
     );
+    // BOTONES DIALOG ELIMINAR PRODUCTO DE ACCIONES
     const deleteProductDialogFooter = (
         <React.Fragment>
             <Button label="No" icon="pi pi-times" outlined onClick={hideDeleteProductDialog} />
             <Button label="Yes" icon="pi pi-check" severity="danger" onClick={deleteProduct} />
         </React.Fragment>
     );
+    // BOTONES DIALOG HEADER CONFIRMACION ELIMINAR
     const deleteProductsDialogFooter = (
         <React.Fragment>
             <Button label="No" icon="pi pi-times" outlined onClick={hideDeleteProductsDialog} />
