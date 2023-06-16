@@ -5,7 +5,7 @@ export default function HistorialPagos({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Vea su historial de pagos</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Historial de pagos</h2>}
         >
             <Head title="HistorialPagos" />
             <Head title="RealizarPagos" />
