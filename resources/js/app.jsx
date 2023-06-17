@@ -9,7 +9,8 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
     
 //core
-import "primereact/resources/primereact.min.css";    
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css"
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
