@@ -9,7 +9,12 @@ class Colegiado extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre',
-        'telefono',
+        'name',
+        'chapter',
+        'address',
+        'incorporationDate',
+        'phone',
+        'cip',
+        'state',
     ];
 }

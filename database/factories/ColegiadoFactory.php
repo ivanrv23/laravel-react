@@ -16,8 +16,15 @@ class ColegiadoFactory extends Factory
      */
     public function definition(): array
     {
+        // 
         return [
-            //
+            'name' => $this->faker->name(),
+            'chapter' => $this->faker->jobTitle(),
+            'address' => $this->faker->address(),
+            'incorporationDate' => $this->faker->date(),
+            'phone' => $this->faker->phoneNumber(),
+            'cip' => $this->faker->creditCardNumber(),
+            'state' => rand(0,1),
         ];
     }
 }
