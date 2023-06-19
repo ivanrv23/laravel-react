@@ -16,16 +16,23 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     {/* grid grid-cols-1 gap-4 md:grid-cols-2 */}
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg"> 
-                        <UpdateProfileInformationForm
+                    {/* <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg"> 
+                        <UpdateUserInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
                             className="max-w-xl"
                         />
-                    </div>
+                    </div> */}
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg columns-1 md:columns-2">
-                        <UpdateUserInformationForm className="max-w-xl" />
+                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg"> 
+                        <UpdateUserInformationForm
+                            mustVerifyEmail={mustVerifyEmail}
+                            status={status}
+                            className="w-full"
+                        />
+                    </div>
+                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                        <UpdateProfileInformationForm className="w-full" />
                     </div>
 
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

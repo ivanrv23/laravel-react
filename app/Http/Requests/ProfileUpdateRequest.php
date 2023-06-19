@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class ProfileUpdateRequest extends FormRequest
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the validation rules that apply to the request. Para actualizar los datos agregar en esta parte ssiiiii
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
@@ -18,6 +18,8 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'role' => ['string', 'max:255'],
+            'estado' => ['string', 'max:255'],
         ];
     }
 }
