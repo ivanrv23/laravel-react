@@ -1,7 +1,9 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\AportacionesControlador;
+use App\Http\Controllers\ColegiadoController;
+use App\Http\Controllers\Pagos;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,6 +26,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+// Rutas
+Route::resource('colegiados', ColegiadoController::class)
+->only('index','store','update');
+
 {/* La de ejemplo*/}
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -69,14 +75,18 @@ Route::get('/administraciongev', function () {
     return Inertia::render('AdministracionGEv');
 })->middleware(['auth', 'verified'])->name('AdministracionGEv');
 Route::get('/administraciongsol', function () {
-    return Inertia::render('AdministracionGSol');
+    return Inertia::render('Administracion/AdministracionSol');
 })->middleware(['auth', 'verified'])->name('AdministracionGSol');
 
+Route::get('/aportaciones', [UsuarioController::class, 'index'])->name('aportaciones.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+/////////////////////////////////////////////////////////////////////////////////////////////////
+Route::resource('Aportaciones', AportacionesControlador::class)->only('index','store','update');
+
 
 require __DIR__.'/auth.php';
