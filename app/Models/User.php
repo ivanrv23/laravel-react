@@ -20,8 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role',
-        'estado',
+        'state',
         'password',
     ];
 
@@ -44,4 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    // traer datos del colegiado por id de usuario
+    public function colegiadoPorUserId(){
+        return $this->belongsTo(Colegiado::class, 'user_id', 'id');
+    }
 }

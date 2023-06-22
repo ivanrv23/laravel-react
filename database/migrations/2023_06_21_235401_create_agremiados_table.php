@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colegiados', function (Blueprint $table) {
+        Schema::create('agremiados', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('chapter');
-            $table->string('address');
-            $table->date('incorporationDate');
-            $table->string('phone');
-            $table->string('cip');
-            $table->boolean('state')->default(1);
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('colegiados');
+        Schema::dropIfExists('agremiados');
     }
 };

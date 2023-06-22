@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\AportacionesControlador;
 use App\Http\Controllers\ColegiadoController;
 use App\Http\Controllers\Pagos;
+use App\Models\Colegiado;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -85,8 +86,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////
-Route::resource('Aportaciones', AportacionesControlador::class)->only('index','store','update');
 
+Route::resource('Aportaciones', AportacionesControlador::class)->only('index','store','update');
+Route::resource('Colegiado', ColegiadoController::class)->only('index','store','update');
 
 require __DIR__.'/auth.php';

@@ -19,12 +19,18 @@ class ColegiadoFactory extends Factory
         // 
         return [
             'name' => $this->faker->name(),
-            'chapter' => $this->faker->jobTitle(),
-            'address' => $this->faker->address(),
-            'incorporationDate' => $this->faker->date(),
+            'surname' => $this->faker->words(3, true),
+            'dni' => $this->faker->ean8(),
+            'codecip' => $this->faker->ean13(),
             'phone' => $this->faker->phoneNumber(),
-            'cip' => $this->faker->creditCardNumber(),
+            'address' => $this->faker->address(),
+            'university' => $this->faker->jobTitle(),
+            'integration' => $this->faker->date(),
             'state' => rand(0,1),
+            'user_id' => rand(1,2),
+            'capitulo_id' => 1,
+            'institution_id' => 1,
+            'agremiado_id' => 1,
         ];
     }
 }

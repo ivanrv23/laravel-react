@@ -5,23 +5,28 @@ import TextInput from '@/Components/TextInput';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 
-export default function UpdateUserInformation({ mustVerifyEmail, status, className = '' }) {
+export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
     const user = usePage().props.auth.user;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
-        email: user.email,
+        chapter: user.chapter,
+        address: user.address,
+        incorporationDate: user.incorporationDate,
+        phone: user.phone,
+        cip: user.cip,
+        state: user.state,
     });
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route('profile.update'));
+        patch(route('Colegiado.update'));
     };
 
     return (
         <section className={className}>
-            <header>
+            <header className="w-full mx-4">
                 <h2 className="text-lg font-medium text-gray-900">Información personal</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
@@ -45,50 +50,50 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
                         <InputError className="mt-2" message={errors.name} />
                     </div>
                     <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="create_at" value="Apellidos" />
+                        <InputLabel htmlFor="apellido" value="Apellidos" />
                         <TextInput
-                            id="create_at"
-                            className="mt-1 block w-full"
-                            value={data.create_at}
-                            onChange={(e) => setData('create_at', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="create_at"
-                        />
-                        <InputError className="mt-2" message={errors.create_at} />
-                    </div>
-                </div>
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="DNI" />
-                        <TextInput
-                            id="name"
+                            id="apellido"
                             className="mt-1 block w-full"
                             value={data.name}
                             onChange={(e) => setData('name', e.target.value)}
                             required
                             isFocused
-                            autoComplete="name"
+                            autoComplete="apellido"
                         />
                         <InputError className="mt-2" message={errors.name} />
                     </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="email" value="Email" />
-
-                        <TextInput
-                            id="email"
-                            type="email"
-                            className="mt-1 block w-full"
-                            value={data.email}
-                            onChange={(e) => setData('email', e.target.value)}
-                            required
-                            autoComplete="username"
-                        />
-
-                        <InputError className="mt-2" message={errors.email} />
-                    </div>
                 </div>
                 <div className='flex'>
+                    <div className='w-1/2 mx-4'>
+                        <InputLabel htmlFor="dni" value="DNI" />
+                        <TextInput
+                            id="dni"
+                            className="mt-1 block w-full"
+                            value={data.cip}
+                            onChange={(e) => setData('cip', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="dni"
+                        />
+                        <InputError className="mt-2" message={errors.cip} />
+                    </div>
+                    <div className='w-1/2 mx-4'>
+                        <InputLabel htmlFor="chapter" value="Email" />
+
+                        <TextInput
+                            id="chapter"
+                            type="text"
+                            className="mt-1 block w-full"
+                            value={data.chapter}
+                            onChange={(e) => setData('chapter', e.target.value)}
+                            required
+                            autoComplete=""
+                        />
+
+                        <InputError className="mt-2" message={errors.chapter} />
+                    </div>
+                </div>
+                {/* <div className='flex'>
                     <div className='w-1/2 mx-4'>
                         <InputLabel htmlFor="name" value="Teléfono" />
                         <TextInput
@@ -219,8 +224,8 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
                             )}
                         </div>
                     )}
-                </div>
-                <div className="flex items-center gap-4">
+                </div> */}
+                <div className="flex items-center gap-4 mx-4">
                     <PrimaryButton disabled={processing}>Guardar</PrimaryButton>
 
                     <Transition

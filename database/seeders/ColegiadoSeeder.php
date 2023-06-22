@@ -13,7 +13,7 @@ class ColegiadoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        Colegiado::factory(50)->create();
+        // crear 2 colegiados desde factory
+        Colegiado::factory(2)->create();
     }
 }
