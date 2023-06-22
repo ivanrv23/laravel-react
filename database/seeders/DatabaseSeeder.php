@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Superusuario',
             'email' => 'admin@gmail.com',
             'rol_id' => 1,
+            'person_id' => 1,
+            'type' => 1,
             'password' => bcrypt('admin'),
         ]);
         
@@ -30,9 +32,19 @@ class DatabaseSeeder extends Seeder
             'name' => 'Colegiado',
             'email' => 'colegiado@gmail.com',
             'rol_id' => 2,
+            'person_id' => 1,
+            'type' => 2,
             'password' => bcrypt('12345678'),
         ]);
 
+        User::create([
+            'name' => 'Contadora',
+            'email' => 'contador@gmail.com',
+            'rol_id' => 2,
+            'person_id' => 1,
+            'type' => 1,
+            'password' => bcrypt('12345678'),
+        ]);
 
         // $this->call([
         //     ColegiadoSeeder::class,

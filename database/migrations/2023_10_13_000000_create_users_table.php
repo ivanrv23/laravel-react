@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('rol_id'); //rol
+            $table->unsignedBigInteger('person_id');// id de colegiado (para los inges) o id de empleado (para el personal)
+            $table->tinyInteger('type')->default(1);// el 1 es colegiado, el 2 es empleado
             $table->string('name', 100);
             $table->string('email', 100)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('rol_id');
             $table->boolean('state')->default(1);
             $table->string('password');
+            $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

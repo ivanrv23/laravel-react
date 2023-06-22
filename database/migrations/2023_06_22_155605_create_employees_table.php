@@ -11,25 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colegiados', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('capitulo_id');// id de capitulo
             $table->unsignedBigInteger('institution_id');// id del colegio
-            $table->unsignedBigInteger('agremiado_id');// tipo de agramiado
             $table->string('name');
             $table->string('surname');
             $table->string('dni', 10);
-            $table->string('codecip', 50);// codigo cip
             $table->string('phone', 20);
             $table->string('address');
             $table->string('university');
+            $table->string('cargo');
             $table->date('integration'); // fecha de integracion al cip
-            $table->boolean('state')->default(1);// estado de colegiado: habilitado o no
             $table->timestamps();
 
-            $table->foreign('capitulo_id')->references('id')->on('capitulos');
             $table->foreign('institution_id')->references('id')->on('institutions');
-            $table->foreign('agremiado_id')->references('id')->on('agremiados');
         });
     }
 
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('colegiados');
+        Schema::dropIfExists('employees');
     }
 };

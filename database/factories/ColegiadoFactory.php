@@ -19,7 +19,7 @@ class ColegiadoFactory extends Factory
         // 
         return [
             'name' => $this->faker->name(),
-            'surname' => $this->faker->words(3, true),
+            'surname' => $this->faker->words(2, true),
             'dni' => $this->faker->ean8(),
             'codecip' => $this->faker->ean13(),
             'phone' => $this->faker->phoneNumber(),
@@ -27,7 +27,6 @@ class ColegiadoFactory extends Factory
             'university' => $this->faker->jobTitle(),
             'integration' => $this->faker->date(),
             'state' => rand(0,1),
-            'user_id' => rand(1,2),
             'capitulo_id' => 1,
             'institution_id' => 1,
             'agremiado_id' => 1,
