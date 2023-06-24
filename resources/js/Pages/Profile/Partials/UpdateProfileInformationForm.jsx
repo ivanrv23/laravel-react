@@ -4,6 +4,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
+import LabelText from '@/Components/LabelText';
 
 export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
     const user = usePage().props.auth.user;
@@ -93,17 +94,12 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         <InputError className="mt-2" message={errors.chapter} />
                     </div>
                 </div>
-                {/* <div className='flex'>
+                <div className='flex'>
                     <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Teléfono" />
-                        <TextInput
-                            id="name"
+                        <InputLabel htmlFor="telefono" value="Teléfono" />
+                        <LabelText
                             className="mt-1 block w-full"
                             value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
                         />
                         <InputError className="mt-2" message={errors.name} />
                     </div>
@@ -121,7 +117,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         <InputError className="mt-2" message={errors.name} />
                     </div>
                 </div>
-                <div className='flex'>
+                {/* <div className='flex'>
                     <div className='w-1/2 mx-4'>
                         <InputLabel htmlFor="name" value="Universidad" />
                         <TextInput

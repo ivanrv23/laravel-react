@@ -2,6 +2,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import LabelText from '@/Components/LabelText';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 
@@ -11,8 +12,8 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
         email: user.email,
-        role: user.role,
-        estado: user.estado,
+        rol_id: user.rol_id,
+        state: user.state,
     });
 
     const submit = (e) => {
@@ -32,35 +33,30 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
             <form onSubmit={submit} className="w-full mt-6 space-y-6">
                 <div className="flex">
                     <div className="w-1/2 mx-4">
-                        <InputLabel htmlFor="name" value="Name" />
+                        <InputLabel htmlFor="name" value="Nombre de Usuario" />
                         <TextInput
                             id="name"
+                            type="text"
                             className="mt-1 block w-full"
                             value={data.name}
                             onChange={(e) => setData('name', e.target.value)}
                             required
-                            isFocused
-                            autoComplete="name"
                         />
                         <InputError className="mt-2" message={errors.name} />
                     </div>
                     <div className="w-1/2 mx-4">
-                        <InputLabel htmlFor="estado_user" value="Estado" />
-                        <TextInput
-                            id="estado_user"
+                        <InputLabel htmlFor="state" value="Estado" />
+                        <LabelText
+                            id="state"
                             className="mt-1 block w-full"
-                            value={data.estado}
-                            onChange={(e) => setData('estado', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="Estado de Usuario"
+                            value={data.state}
                         />
-                        <InputError className="mt-2" message={errors.name} />
+                        <InputError className="mt-2" message={errors.state} />
                     </div>
                 </div>
                 <div className="flex">
                     <div className="w-1/2 mx-4">
-                        <InputLabel htmlFor="email" value="Email" />
+                        <InputLabel htmlFor="email" value="Correo Electrónico" />
                         <TextInput
                             id="email"
                             type="email"
@@ -68,22 +64,17 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             required
-                            autoComplete="username"
                         />
                         <InputError className="mt-2" message={errors.email} />
                     </div>
                     <div className="w-1/2 mx-4">
-                        <InputLabel htmlFor="rol_user" value="Rol" />
-                        <TextInput
-                            id="rol_user"
-                            type="text"
+                        <InputLabel htmlFor="rol_id" value="Rol de Usuario" />
+                        <LabelText
+                            id="rol_id"
                             className="mt-1 block w-full"
-                            value={data.role}
-                            onChange={(e) => setData('role', e.target.value)}
-                            required
-                            autoComplete="Rol de Usuario"
+                            value={data.rol_id}
                         />
-                        <InputError className="mt-2" message={errors.email} />
+                        <InputError className="mt-2" message={errors.rol_id} />
                     </div>
                     {mustVerifyEmail && user.email_verified_at === null && (
                         <div>

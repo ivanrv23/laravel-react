@@ -47,7 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    // traer datos del colegiado por id de usuario
+    // traer datos del rol por id de acuerdo al usuario
     public function colegiadoPorUserId(){
         return $this->belongsTo(Colegiado::class, 'user_id', 'id');
     }
