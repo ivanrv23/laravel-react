@@ -12,7 +12,7 @@ class UpdateColegiadoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,7 +32,6 @@ class UpdateColegiadoRequest extends FormRequest
             'university' => ['string', 'required', 'max:255'],
             'integration' => ['required', 'date_format:d/m/Y'],
             'state' => ['boolean'],
-            'user_id' => ['number', 'required', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
 }

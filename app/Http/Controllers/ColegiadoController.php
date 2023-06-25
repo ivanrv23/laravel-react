@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Colegiado;
 use App\Http\Requests\StoreColegiadoRequest;
 use App\Http\Requests\UpdateColegiadoRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ColegiadoController extends Controller
@@ -56,9 +58,18 @@ class ColegiadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateColegiadoRequest $request, Colegiado $colegiado)
+    public function update(UpdateColegiadoRequest $request)
     {
-        //
+        $personid = Auth::user()->person_id;
+        $colegiado = Colegiado::find($personid);
+        // $colegiado->update([
+        //     'address' => $request->address,
+        //     'phone' => $request->phone,
+        // ]);
+        echo '<script>console.log('.$personid.')</script>';
+        // $request->user()->save();
+
+        //return Redirect::route('profile.edit');
     }
 
     /**

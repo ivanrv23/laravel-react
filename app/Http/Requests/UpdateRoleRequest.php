@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
-
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreColegiadoRequest extends FormRequest
+class UpdateRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +22,7 @@ class StoreColegiadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            //
         ];
     }
 }

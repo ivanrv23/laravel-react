@@ -5,7 +5,7 @@ import UpdateProfileInformationForm from './Partials/UpdateProfileInformationFor
 import UpdateUserInformationForm from './Partials/UpdateUserInformationForm';
 import { Head } from '@inertiajs/react';
 
-export default function Edit({ auth, mustVerifyEmail, status }) {
+export default function Edit({ auth, mustVerifyEmail, status, persona, rol }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -21,11 +21,15 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                         <UpdateUserInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
+                            rol={rol}
                             className="w-full"
                         />
                     </div>
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <UpdateProfileInformationForm className="w-full" />
+                        <UpdateProfileInformationForm 
+                            className="w-full"
+                            persona={persona} 
+                        />
                     </div>
 
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

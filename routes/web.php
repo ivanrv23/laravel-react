@@ -91,9 +91,11 @@
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::delete('/profile', [ProfileController::class, 'show'])->name('profile.show');
+        Route::patch('/profile', [ColegiadoController::class, 'update'])->name('colegiado.update');//actualizar la info de colegiado en profile
     });
 
     Route::resource('Aportaciones', AportacionesControlador::class)->only('index', 'store', 'update');
-    Route::resource('Colegiado', ColegiadoController::class)->only('index', 'store', 'update');
+    // Route::resource('colegiado', ColegiadoController::class)->only('index', 'store', 'update');
+    
 
     require __DIR__ . '/auth.php';

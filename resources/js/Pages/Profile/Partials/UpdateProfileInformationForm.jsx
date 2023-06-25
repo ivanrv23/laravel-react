@@ -6,24 +6,26 @@ import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 import LabelText from '@/Components/LabelText';
 
-export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
-    const user = usePage().props.auth.user;
+export default function UpdateProfileInformation({ persona, className = '' }) {
+    //const user = usePage().props.auth.user;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
-        name: user.name,
-        chapter: user.chapter,
-        address: user.address,
-        incorporationDate: user.incorporationDate,
-        phone: user.phone,
-        cip: user.cip,
-        state: user.state,
+        address: persona[0].address,
+        phone: persona[0].phone,
     });
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route('Colegiado.update'));
+        patch(route('colegiado.update'));
     };
+    //Verificar el Estado de Colegiado
+    var estado = "";
+    if (persona[0].state == '1') {
+        estado = "Habilitado";
+    } else {
+        estado = "Inhabilitado";
+    }
 
     return (
         <section className={className}>
@@ -36,201 +38,111 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
+                <div className='flex flex-col md:flex-row'>
+                    <div className='md:w-1/2 mx-4'>
                         <InputLabel htmlFor="name" value="Nombres" />
-                        <TextInput
+                        <LabelText
                             id="name"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
+                            value={persona[0].name}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
-                    <div className='w-1/2 mx-4'>
+                    <div className='md:w-1/2 mx-4'>
                         <InputLabel htmlFor="apellido" value="Apellidos" />
-                        <TextInput
+                        <LabelText
                             id="apellido"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="apellido"
+                            value={persona[0].surname}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
                 </div>
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
+                <div className='flex flex-col md:flex-row'>
+                    <div className='md:w-1/2 mx-4'>
                         <InputLabel htmlFor="dni" value="DNI" />
-                        <TextInput
+                        <LabelText
                             id="dni"
                             className="mt-1 block w-full"
-                            value={data.cip}
-                            onChange={(e) => setData('cip', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="dni"
+                            value={persona[0].dni}
                         />
-                        <InputError className="mt-2" message={errors.cip} />
                     </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="chapter" value="Email" />
-
-                        <TextInput
-                            id="chapter"
-                            type="text"
-                            className="mt-1 block w-full"
-                            value={data.chapter}
-                            onChange={(e) => setData('chapter', e.target.value)}
-                            required
-                            autoComplete=""
-                        />
-
-                        <InputError className="mt-2" message={errors.chapter} />
-                    </div>
-                </div>
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="telefono" value="Teléfono" />
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="university" value="Universidad" />
                         <LabelText
+                            id="university"
                             className="mt-1 block w-full"
-                            value={data.name}
+                            value={persona[0].university}
                         />
-                        <InputError className="mt-2" message={errors.name} />
-                    </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Dirección" />
-                        <TextInput
-                            id="name"
-                            className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
-                        />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
                 </div>
-                {/* <div className='flex'>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Universidad" />
-                        <TextInput
-                            id="name"
+                <div className='flex flex-col md:flex-row'>
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="agremiado" value="Tipo de agremiado" />
+                        <LabelText
+                            id="agremiado"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
+                            value={persona[0].agremiado_id}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Tipo de agremiado" />
-                        <TextInput
-                            id="name"
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="codecip" value="Código CIP" />
+                        <LabelText
+                            id="codecip"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
+                            value={persona[0].codecip}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
                 </div>
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Código CIP" />
-                        <TextInput
-                            id="name"
+                <div className='flex flex-col md:flex-row'>
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="integration" value="Fecha de Integración" />
+                        <LabelText
+                            id="integration"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
+                            value={persona[0].integration}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Fecha de Integración" />
-                        <TextInput
-                            id="name"
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="state" value="Estado de Colegiatura" />
+                        <LabelText
+                            id="state"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                            isFocused
-                            autoComplete="name"
+                            value={estado}
                         />
-                        <InputError className="mt-2" message={errors.name} />
                     </div>
                 </div>
-                <div className='flex'>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Estado de Colegiatura" />
+                <div className='flex flex-col md:flex-row'>
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="address" value="Dirección" />
                         <TextInput
-                            id="name"
+                            id="address"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
+                            value={data.address}
+                            onChange={(e) => setData('address', e.target.value)}
                             required
-                            isFocused
-                            autoComplete="name"
                         />
-                        <InputError className="mt-2" message={errors.name} />
+                        <InputError className="mt-2" message={errors.address} />
                     </div>
-                    <div className='w-1/2 mx-4'>
-                        <InputLabel htmlFor="name" value="Foto de perfil" />
+                    <div className='md:w-1/2 mx-4'>
+                        <InputLabel htmlFor="phone" value="Teléfono" />
                         <TextInput
-                            id="name"
+                            id="phone"
                             className="mt-1 block w-full"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
+                            value={data.phone}
+                            onChange={(e) => setData('phone', e.target.value)}
                             required
-                            isFocused
-                            autoComplete="name"
                         />
-                        <InputError className="mt-2" message={errors.name} />
+                        <InputError className="mt-2" message={errors.phone} />
                     </div>
-                    {mustVerifyEmail && user.email_verified_at === null && (
-                        <div>
-                            <p className="text-sm mt-2 text-gray-800">
-                                Your email address is unverified.
-                                <Link
-                                    href={route('verification.send')}
-                                    method="post"
-                                    as="button"
-                                    className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
-                                    Click here to re-send the verification email.
-                                </Link>
-                            </p>
-                            {status === 'verification-link-sent' && (
-                                <div className="mt-2 font-medium text-sm text-green-600">
-                                    A new verification link has been sent to your email address.
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div> */}
+                </div>
                 <div className="flex items-center gap-4 mx-4">
                     <PrimaryButton disabled={processing}>Guardar</PrimaryButton>
-
                     <Transition
                         show={recentlySuccessful}
                         enterFrom="opacity-0"
                         leaveTo="opacity-0"
                         className="transition ease-in-out"
                     >
-                        <p className="text-sm text-gray-600">Saved.</p>
+                        <p className="text-sm text-gray-600">Guardado Colegiado.</p>
                     </Transition>
                 </div>
             </form>

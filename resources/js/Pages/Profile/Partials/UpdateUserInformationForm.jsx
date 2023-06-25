@@ -6,7 +6,7 @@ import LabelText from '@/Components/LabelText';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 
-export default function UpdateUserInformation({ mustVerifyEmail, status, className = '' }) {
+export default function UpdateUserInformation({ mustVerifyEmail, status, rol, className = '' }) {
     const user = usePage().props.auth.user;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
@@ -14,6 +14,8 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
         email: user.email,
         rol_id: user.rol_id,
         state: user.state,
+        type: user.type,
+        photo: user.photo,
     });
 
     const submit = (e) => {
@@ -21,7 +23,13 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
 
         patch(route('profile.update'));
     };
-
+    //Verificar el Estado de usuario
+    var estado = "";
+    if (user.state == '1') {
+        estado = "Activo";
+    } else {
+        estado = "Inactivo";
+    }
     return (
         <section className={className}>
             <header className="w-full mx-4">
@@ -49,9 +57,8 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
                         <LabelText
                             id="state"
                             className="mt-1 block w-full"
-                            value={data.state}
+                            value={estado}
                         />
-                        <InputError className="mt-2" message={errors.state} />
                     </div>
                 </div>
                 <div className="flex">
@@ -72,9 +79,8 @@ export default function UpdateUserInformation({ mustVerifyEmail, status, classNa
                         <LabelText
                             id="rol_id"
                             className="mt-1 block w-full"
-                            value={data.rol_id}
+                            value={rol[0].namerol}
                         />
-                        <InputError className="mt-2" message={errors.rol_id} />
                     </div>
                     {mustVerifyEmail && user.email_verified_at === null && (
                         <div>
